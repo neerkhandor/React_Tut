@@ -1,0 +1,116 @@
+why react?hype,job,trend,build ui
+makes easy to manage and build complex frontend
+at the end browser just understand html,css,js
+so react at the end compile hota hai into html,css,js
+complex frontend matlab ek jagah pe click karne se 4 5 jagah pe updates ho rhi hai
+facebook phased a problem of phantom message there was problem like whenever you have new
+message then we use to get notification then there was drop down wahape bhi msg likha aata tha
+ki kisne kitne message bheje hai so wahase chatbox open hojata tha and wahape chat ka icon tha
+wahase to pura chat ka part open hojata tha to problem yahape ye thiki maine chat pe click kiya 
+user se baat karli but upar jo icon tha no of message likha hua wo gayab hi nahi ho raha tha
+and agar notification pe click karke sidha chat ke pure content wale page pe aagaye ho then
+wo icon notification mein bhi rahega and drop down mein bhi rahega 
+state(variable) managed by js
+ui->dom
+there was no sync between state and ui
+to solve this problem react came
+initially khan academy and unsplash ne tarif ki react ki
+jab ek button click karne pe 3 4 jagah state update ho to uss jagah pe react  bohot consistently work karta tha
+React is library(library is cool dude more freedom)
+component reusability aasan hogaya react through
+props key value hi hai object jaisa
+propogate changes is done using hook
+react spa banata hai
+router react ki core functionality nahi hai 
+kabhi kabhi hamare paas bohot variables hojate hai to konsa variable kaha update horaha hai
+wo manage karna difficult hojata hai so uske liye we have state management 
+uska sabse famous hai redux
+baas apps->appwrite,firebase,superbase(backend as a service)
+react is not a complete solution no seo browser rendering (browser ko saara kam dete hai to convert into
+html,css,js) so browser slow hojayega
+next.js ->backend+frontend
+vite parser ye sab bundler
+react ke saath react-dom aur react-native bhi hota hai
+if i want to work on the web i will use(react-dom)
+npm is installer like pip 
+agar install nahi sidha exec karna hai to we have npx
+there are various ways to create react app
+sabse basic method is {npx create-react-app <projectName>}
+create-react-app is very bulky utility(software)
+package.json is entry point
+what is there in package.json there is name,version,testing library,react-scripts,web-vitals
+(to track the performance of our website)
+scripts hi project ko chalati hai
+start development time mein kam karne ke time chalti hai
+build production ke waqt use aata hai
+test to run all test cases
+browserlist konse browser pe chalege
+cd karke project mein aajana usme aapko package.json dikhna chahiye nahi to aap galat location pe ho
+npm run start   -> to run the application
+page source pe dekhenege to kuch nahi hai isliye hi react seo ke liye acha nahi hai
+now we will create using vite
+npm create-vite@latest 
+mention project name ->
+select a framwork -> react
+dev dependency sirf development ke dauran use hoti hai production mein nahi jaati
+yahape hame node modules nahi milte hai yahape dependency mein hame koi testing library nahi milti
+npm i se we will install node_modules
+aap majorly src mein hi kaam karte hai
+node_modules ke andar package.json ki saare dependency install karne ke baad yahape milegi
+package lock.json wo saare dependency ko lock kardega ki wo yehi version pe chalega
+dependency ka stable version lock kar dete hai
+manifest file mobile device ke liye kaam aati hai
+robots.txt search engine ke liye hai
+index.html ke andar sirf ek empty div hai jiska id root hai
+isme koi js file inject nahi ki hai
+src mein entry point hai index.js zaruri nahi hai ki yehi naam se ho
+react khudka dom banata hai(tree like structure) jisko virtual dom kehte hai
+and compare karta hai ki original dom se kitna different hai virtual dom 
+react hame jsx ki power deta hai ham custom tags bana sakte hai
+js ke through html element render ho raha hai
+function lo function ke andar html return karo and mein uss html ko render karvalunga
+hamare paas programming capabilities aa gayi html ke andar
+hamare paas react scripts hai jo chupkese index.html mein index.js load kar deti hai
+vite ke andar thoda different hai and scripts ko sidha hi load kar liya hai kyuki waha pe react scripts hai hi nahi
+script or testing library hat gayi isliye wo light hogayi
+jab components banate hai tab .jsx likhte hai
+ham ek html element return karte hai
+vite se application banate hai to .jsx hi likhna padta hai and 1st letter capital hona chahiye file ka
+ham to ek hi element return kar sakte hai so hamne <></> fragment return karliya
+and iss fragment ke andar ham sab kuch wrap kar denge
+using normal create method
+whenever we create a component we capitalize the name of the function as well as file name
+agar jsx return ho raha hai to .jsx hi rakhna but normal wale method mein it is not compulsory to write .jsx
+ham spa kyu kehte hai kyuki hamare paas ek hi to div hai
+logoko dikhta to root hi hai ham sirf user ko feel dete hai ke wo alag page pe hai ham url mein iskeliye manipulate karte hai
+syntax ki parsing is done by some bundler like babel
+behind the scence bohot saare optimization hoti hai
+variables ya js kaise inject hogi {username}
+{ye evaluated expression hai}
+react.createElement is injected by babel
+mein chahta hu button click hone pe work ho naki pehle se run hojaye
+ui updation mein problem ho rahi hai variable updation will be handled by react itself
+1 variable mulitple jagah pe update karna tha to uske liye react gave certain hooks using which we can work on updating the data
+every hook have certain work
+ui updation ko react handle karta hai
+import react ki jarurat nahi ab kyuki ye sab meherbani ab babel kar raha hai
+useState is responsible to propogate change in the ui
+state ko change karne keliye responsible
+default value kuch bhi de sakte hai empty object,array any string,value,etc..
+1st is variable 2nd is method
+kisika reference wagera nahi lena 
+to update anything use setCounter
+virtual dom is not used much in react now adays
+createRoot method behind the scene bohot kuch karta hai wo ek virtual dom create karta hai
+and jo bhi changes hai use hi update karta hai but browser kya karta hai pura dom remove karta hai and usko wapas se repaint
+karta hai uske karan hi loading wala symbol aata hai
+virtual dom mein aap pura ke pure dom ka track rakh sakte ho and jo jo value change hui usko dom se niakl ke wapas rakh sakte ho
+har ui ko instantaneouly update karna jaruri nahi hai
+react fiber githhub
+actual mein react dom abhi bhi hai but usko update karne kaam/algorithm is done by fiber
+
+
+
+
+
+
