@@ -108,8 +108,40 @@ virtual dom mein aap pura ke pure dom ka track rakh sakte ho and jo jo value cha
 har ui ko instantaneouly update karna jaruri nahi hai
 react fiber githhub
 actual mein react dom abhi bhi hai but usko update karne kaam/algorithm is done by fiber
-
-
+react behind the scene fiber hi use karti hai
+animation bohot hit hoti thi update constantly aaya karte the se initial updates ki jagah sirf final update hi kardete hai
+key features : ability to pause,abort or reuse work as new update come in
+ability to assign priority to the different types of updates
+hydration(button aa gaye ,images aagaye but js ab tak nahi aayi hai so web layout ban gayi ab js load hoyegi)
+button ka main kaam kya hai click hona hi to hai to click kai baar nahi hota to hydration process iss algorithm se better ho jati hai
+roconcillation: the algorithm react use to differentiate one tree with another tree to determine which parts to be changed
+reconciliation is the algorithm behind what is popularly understood as virtual dom
+diffing of list is performed using keys.(list ki performance improve karna ho to keys ka use karna hi padega)
+props->properties
+image tag ko closing tag mein daalna hoga
+props component ko banata hai reusable
+ham jo bhi value pass karenge wo receive hojayega
+array,object mein const mein bhi update kar sakte hai
+***interview question***
+counter application -> agar setCounter mulitple times kiya then wo ek click pe ek bhi baar hi update hona hai
+useState kya karta hai aapko jitne bhi updates bhejne hai wo batches mein bhejta hai
+aap ek hi kaam baar baar kar raha ho sablog ek hi counter ko update kar rahe hai
+arre same hi to kaam hai so ham usse prevCounter dete hai
+setCounter mein aapko callback milta hai aap jaise hi prevCounter dete ho(last updated state)
+so callback ke through jab aata hai tab complete hone ke baad dusra call hota hai wahape update hota hai
+what i can see is colors change ho rahe hai to colors ko mujhe koi na koi variable mein hold karna padega
+kyuki wo sirf color variable nahi but ui mein jaake update ho raha hai is liye hame ek state chahiye
+onClick ko function chahiye and agar mujhe parameter pass karne hoto i have to use a callback
+***Password Generator***
+ek to length chahiye and length update karnekeliye we need useState
+in checkbox we have true false numberAllowed,setNumberAllowed
+password field mein bhi data aata hai so uska bhi hame ek useState chahiye
+useCallback 
+hooks kya hai ek function hi to hai
+hooks purely js hi return karte hai ,standardized approach to use use
+mein chahte hu ki jab data load ho tab mein hook ko call karu
+useEffect will be use in this case so isme fetch automatically call hojayega function ke andar function call nahi karna padega
+jabbhi data milta hai wo string format mein hota hai date ki hame requirement nahi hai
 
 
 
