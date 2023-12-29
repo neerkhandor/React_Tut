@@ -28,7 +28,7 @@ uska sabse famous hai redux
 baas apps->appwrite,firebase,superbase(backend as a service)
 react is not a complete solution no seo browser rendering (browser ko saara kam dete hai to convert into
 html,css,js) so browser slow hojayega
-next.js ->backend+frontend
+next.js -> backend+frontend
 vite parser ye sab bundler
 react ke saath react-dom aur react-native bhi hota hai
 if i want to work on the web i will use(react-dom)
@@ -100,7 +100,7 @@ default value kuch bhi de sakte hai empty object,array any string,value,etc..
 1st is variable 2nd is method
 kisika reference wagera nahi lena 
 to update anything use setCounter
-virtual dom is not used much in react now adays
+virtual dom is not used much in react nowadays
 createRoot method behind the scene bohot kuch karta hai wo ek virtual dom create karta hai
 and jo bhi changes hai use hi update karta hai but browser kya karta hai pura dom remove karta hai and usko wapas se repaint
 karta hai uske karan hi loading wala symbol aata hai
@@ -143,7 +143,82 @@ mein chahte hu ki jab data load ho tab mein hook ko call karu
 useEffect will be use in this case so isme fetch automatically call hojayega function ke andar function call nahi karna padega
 jabbhi data milta hai wo string format mein hota hai date ki hame requirement nahi hai
 
+////React Router Crash////
+parameter capture karna is possible in the url and wo ek baar sikh gaye to 
+then id,productId sabkuch same hi hai
+react-router-dom is 3rd party library 
+link we use in case of a tag 
+navLink provide us extra things 
+when we are in header than how will the header know on which page it is for that we have to use
+callback in classes callback ki classes ko manipulate kaise karte hai uske liye we have access of 1 variable isActive
+hamne react router install kar liye hai to hame abhi react-router-dom ki taraf jana hoga
+ham index.js mein we will use RouterProvider and it requires a router
+and this router is created using BrowserRouter which takes an array
+there is one more method createRoutesFromElement
+myparams -> 'user/:userid'  userid ko notedown karlena
+jab bhi ham fb pe ya koi bhi site pe jaate hai layout to same hi rehta hai sirf aapka data change hojata hai
+useParams ye bhi react-router-dom se hi aata hai
+isme jo bhi url mein aata hoga uska access aapko miljayega then let it be any value or string
+uske basis pe aap kuch display karana chahte ho ya koi db calll karna chahte ho wo totally ispe depend karta hai
+api call hame chahiye jab github wala page load ho so this is possible through useEffect
+fetch call karenge usme api ka url daalenge and baadme .then mein response milega ye response
+string format mein hai we will convert it into json format
+and baadme aur ek .then mein hame actual data milega to ab wo data ko page pe render karnekeliye
+ek state chahiye so we will use useState
+outlet ke help se ham react router dom mein nesting kar sakte hai
+loader helps in optimization whenever user hpver also it starts fetching data so it has less lag
+we have a hook for loader useLoaderData
+ye optimization aapko nextjs bhi deta hai abt loader 
+ham direct api calls loader ke andar hi callback ke through kar sakte hai so jaisa ham mouse ya cursor
+late hai fetching shuru ho jata hai and cache mein bhi store rakhta hai useEffect ke pehle bhi hojata hai
+loader ke andar pura fetch likh sakte hai but documentation mein wo log ne method call kiya hai
+ham wo response ko directly return kar sakte hai ye promise hai then also we can return it but we have to 
+return it using response.json()
+ham top level pe layout rakhte hai to uske basis pe hi routing hogi
+uske andar outlet laga rakha hai tabhi wo uske andar ka reflect karega
+ham dynamic value bhi le sakte hai url se user/:userid
 
 
+///////useEffect,useCallback,useRef////////
+ek hi method ko baar baar run karna hai to wo method ko agar optimized way mein kiya then it will be good
+length ko track karnekeliye useState Lagega and uski default value lemi hogi
+ek hi method ko baar baar call karna hai so useCallback is used for that
+useCallback is a react hook that lets you cache a function definition between rerenders
+mere paas ek function hai usko jitna ho sake utna cache mein rakhlo and jab bhi wapas run ho to jitna pehle ka part ho wo wapas run hojaye
+in useCallback we pass function and dependency (ye change hotehi function dubara run hona chahiye)
+setPassword ke basis pe bhi function re run karna hai 
+memoization ka bhi concept use kiye hai(caching ka)
+memoization ka concept hai to ek dependency aap usko wo bhi pass kardo set ho rahi hai
+jitni bhi dependency hai usme rerun hoga to agar mein setPassword ki jagah sirf password deta to wo infininte loop mein fas jata
+
+prev=>!prev  prev value ka access milta hai
+useEffect hook is used 
+it requires callback function and dependency array
+inme kuch bhi chedchad ho dubara se run karna like length mein ya checkbox mein 
+kuch bhi chedchad ho dubara se run karna
+run karneka is achieved through useEffect
+useRef is referencing hook kisi bhi chiz ka reference lena ho to we use this hook
+koi bhi element ka aap reference leke usme changes kar sakte ho
+kisko select karu kya changes karu
+agar dependency hai to think of useCallback 
+hamne optionally select karvate hai(?.) to null value ya empty value ho to select nahi hoga
+useEffect page load hota hai tabhi call hota hai and dependency array 
+mein se kiske saath changes hui to wapas call hoga
 
 
+//// currencyConverter /////
+koi bhi component mount hota hai ya uska lifecycle trigger hota hai to hamare paas ek hook hai useEffect
+hooks function hi to hai
+custom hook banana is not a big thing they normally returns js
+kai hook optional argument leta hai
+mein directly fetch bhi call kar sakta hu but mujhe chahiye ki jab ye hook load hoga tab mein iss hook ko call karna chahta hu
+useEffect mein automatically fetch call hojayega and mujhe iss function ke andar aur ek function ko call nahi karna padega
+fetch ke saath i can do chaining
+currency ke andar jab bhi change ho mein usse call karna chahta hu
+loops mei key ka dhyan rakhe to performance degrade na ho
+ids are more preferred in key
+do not call useId for keys in loop
+
+
+///// context api /////
+props ke andar props sirf aage pass karnekeliye a prop has to go to various places
