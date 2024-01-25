@@ -1,5 +1,5 @@
 why react?hype,job,trend,build ui
-makes easy to manage and build complex frontend
+makes easy to manage and build complex frontend  ->main reason for using react
 at the end browser just understand html,css,js
 so react at the end compile hota hai into html,css,js
 complex frontend matlab ek jagah pe click karne se 4 5 jagah pe updates ho rhi hai
@@ -17,22 +17,27 @@ to solve this problem react came
 initially khan academy and unsplash ne tarif ki react ki
 jab ek button click karne pe 3 4 jagah state update ho to uss jagah pe react  bohot consistently work karta tha
 React is library(library is cool dude more freedom)
-component reusability aasan hogaya react through
+component reusability aasan hogaya react through kis tarah buttons ko use kar sakte hai 10 jagah pe
+footers headers kaisa use hosakte hai kiss tarah cads mulitple jagah use kar sakte hai
 props key value hi hai object jaisa
 propogate changes is done using hook
-react spa banata hai
+react spa banata hai page kabhi reload nahi hota 
+but agar mujhe mulitple pages pe jaana hai jaise ki /contact /user etc to yahape manipulation use hota hai
 router react ki core functionality nahi hai 
 kabhi kabhi hamare paas bohot variables hojate hai to konsa variable kaha update horaha hai
 wo manage karna difficult hojata hai so uske liye we have state management 
-uska sabse famous hai redux
-baas apps->appwrite,firebase,superbase(backend as a service)
+uska sabse famous hai redux redux toolkit is a version of redux only but isme abhi thoda abstraction laya gaya
+hai and wo thoda easier version hai
+after that react came with context api hooks hi deta hai jisse state management easy hoga
+baas apps->appwrite,firebase,superbase(backend as a service)backend likhna nahi padta
 react is not a complete solution no seo browser rendering (browser ko saara kam dete hai to convert into
 html,css,js) so browser slow hojayega
+by default routing bhi nahi provide karta hai react
 next.js -> backend+frontend
 vite parser ye sab bundler
 react ke saath react-dom aur react-native bhi hota hai
 if i want to work on the web i will use(react-dom)
-npm is installer like pip 
+npm is installer like pip that helps to intall various packages
 agar install nahi sidha exec karna hai to we have npx
 there are various ways to create react app
 sabse basic method is {npx create-react-app <projectName>}
@@ -61,6 +66,20 @@ package lock.json wo saare dependency ko lock kardega ki wo yehi version pe chal
 dependency ka stable version lock kar dete hai
 manifest file mobile device ke liye kaam aati hai
 robots.txt search engine ke liye hai
+When creating a React project, the robots.txt file is initially empty. This is because React projects are typically 
+hosted on a server that is not publicly accessible, so there is no need to block any bots from crawling the site.
+However, if you do want to allow bots to crawl your React project, you can add a robots.txt file
+ to the root directory of your project. The robots.txt file tells bots which pages or directories they are allowed to access. For example, you might want to allow bots to access the /public directory of your project, which contains static assets like images and CSS files.
+Here is an example of a robots.txt file that allows bots to access the /public directory:
+User-agent: *
+Allow: /public
+
+You can also use the robots.txt file to block bots from accessing certain pages or directories on your site.
+For example, you might want to block bots from accessing the /admin directory of your project, which contains sensitive information.
+Here is an example of a robots.txt file that blocks bots from accessing the /admin directory:
+User-agent: *
+Disallow: /admin
+    
 index.html ke andar sirf ek empty div hai jiska id root hai
 isme koi js file inject nahi ki hai
 src mein entry point hai index.js zaruri nahi hai ki yehi naam se ho
@@ -222,3 +241,32 @@ do not call useId for keys in loop
 
 ///// context api /////
 props ke andar props sirf aage pass karnekeliye a prop has to go to various places
+app ke through card mein data pass karna hai ye data props ke through accept hota tha
+app->dashboard->leftSide->rightSide->topComponent->card
+props ke andar props hi possible hai usage nahi hai to bhi daa pass kar rahe hai 
+
+but agar kuch global object hota jo sidha card se baat kar sake
+so isse raita nahi faliega ye problem tha prop drllling
+contextApi is the solution to this but ye prop drilling ki problem sirf react ko thodina thi 
+so redux is used for this problem state management ko organized form mein karna
+redux ka simpler version is redux toolkit 
+context api is just for react
+ek baar context api samajh gaye to redux toolkit bhi easily samajh jayega
+what is state management?State management is a user interface programming technique that involves managing the state of one or more user interface controls
+context api matlab ek global variable bana raha hu us variable ke andar saara data jaayega
+but react hai to state itni aasani se update nahi hoti so ham wapas se ussi problem mein fas jaate state synchronize nahi hoti
+kyuki koi bhi variable usse update kardega and jaha nahi chahiye waha bhi update hojayega isliye nahi to mien ek global.js ka bhi file bana sakta tha but usme states synchronized nahi rahegi
+src mein context naam ka file banayenge and isne pure and pure js hi use hota hai
+react ke andar hi hame context mil jata hai
+context hame major chij deta hai provider har ek context ek provider hota hai and usko ham ek wrapper provide karenge\
+jitne bhi hai login card dashboard inn sabhi ko wrap kar diya inside userContext
+jaise hi isse wrap karvadiya ye ban jayenge provider and provider matlab ab koi bhi iske andar is global context ka access mil jayega
+context ko global variable ki tarah hi maano so andar ke saare child component userContext ka access le sakte hai
+providee ko bananeka 2 tarike hai
+context provider will be in jsx 
+children bas ek generic naam hai ki aapko jo bhi data aa raha hai from props aap usse aage dedo
+value mein hame jo chize chahiye wo pass kar sakte hai
+store ka access main.jsx mein bhi ho sakta hai ya app.jsx mein bhi ho sakta hai 
+
+context api light/dark theme
+default object rakh sakte hai 
