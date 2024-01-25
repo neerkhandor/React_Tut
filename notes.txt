@@ -105,68 +105,150 @@ logoko dikhta to root hi hai ham sirf user ko feel dete hai ke wo alag page pe h
 syntax ki parsing is done by some bundler like babel
 behind the scence bohot saare optimization hoti hai
 variables ya js kaise inject hogi {username}
-{ye evaluated expression hai}
+{ye evaluated expression hai} yahape kuch bhi javascript nahi likh sakte if wagera yahape nahi likh sakte 
+jo chiz evaluate hoke aayegi wohi likhenge
 react.createElement is injected by babel
+button click hone pe run ho isliye ham onClick={addValue} na ki onClick={addValue()}
 mein chahta hu button click hone pe work ho naki pehle se run hojaye
+ui ke andar kya kya chize kab update hogi wo ham nahi react decide karta hai
+yehi agar counter ki value mein multiple jagah use kar raha hota while showing it 
+while using in add value func or while using in remove value func
+to normal js se baar baar document.getElementById baar baar karna padta
+hooks ke through hi data update hoga
 ui updation mein problem ho rahi hai variable updation will be handled by react itself
 1 variable mulitple jagah pe update karna tha to uske liye react gave certain hooks using which we can work on updating the data
 every hook have certain work
+ek task ek hi function kare modularity
 ui updation ko react handle karta hai
 import react ki jarurat nahi ab kyuki ye sab meherbani ab babel kar raha hai
+import {useState} from 'react'
+state ko change karnekeliye responsible
+change matlab value ko update nahi kar dega woh change ko propogate karta hai into ui
+
+useState()
+default value kuch bhi de sakte hai true,false,'',[],etc
+useState se do chize milti hai array ke format mein 
+0th index mein variable and 1st index mein 2nd variable is a function
+
 useState is responsible to propogate change in the ui
 state ko change karne keliye responsible
 default value kuch bhi de sakte hai empty object,array any string,value,etc..
 1st is variable 2nd is method
+state and ui ka sync ab hua
 kisika reference wagera nahi lena 
 to update anything use setCounter
 virtual dom is not used much in react nowadays
+
 createRoot method behind the scene bohot kuch karta hai wo ek virtual dom create karta hai
-and jo bhi changes hai use hi update karta hai but browser kya karta hai pura dom remove karta hai and usko wapas se repaint
+and jo bhi changes hai use hi update karta hai but browser kya karta hai pura dom remove karta hai and usko wapas se repaint(pura web structure change hota hai)
+pure ke pure dom ka track rakhta hai
 karta hai uske karan hi loading wala symbol aata hai
-virtual dom mein aap pura ke pure dom ka track rakh sakte ho and jo jo value change hui usko dom se niakl ke wapas rakh sakte ho
+virtual dom mein aap pura ke pure dom ka track rakh sakte ho and jo jo value change hui usko dom se nikal ke wapas rakh sakte ho
 har ui ko instantaneouly update karna jaruri nahi hai
-react fiber githhub
+kuch updation call maine kar diye ho to mein call ko drop kar lu 
+react fiber github
 actual mein react dom abhi bhi hai but usko update karne kaam/algorithm is done by fiber
 react behind the scene fiber hi use karti hai
 animation bohot hit hoti thi update constantly aaya karte the se initial updates ki jagah sirf final update hi kardete hai
 key features : ability to pause,abort or reuse work as new update come in
+ability to assign priority
 ability to assign priority to the different types of updates
 hydration(button aa gaye ,images aagaye but js ab tak nahi aayi hai so web layout ban gayi ab js load hoyegi)
 button ka main kaam kya hai click hona hi to hai to click kai baar nahi hota to hydration process iss algorithm se better ho jati hai
+diff ->differentiation algorithm dom tree aur react-dom tree ko compare karne wala algo
 roconcillation: the algorithm react use to differentiate one tree with another tree to determine which parts to be changed
 reconciliation is the algorithm behind what is popularly understood as virtual dom
 diffing of list is performed using keys.(list ki performance improve karna ho to keys ka use karna hi padega)
+ui list kuch bhi kar rahe ho keys ka use karna hi hoga to improve the performance
+array ko loop mein keys dena chahiye kyuki fiber jo nahi algo likhi thi usme agat list ki performance ko improve karna hai to
+fiber ke andar we can pause work and come back to it later
+assign priority to different types of works
+reuse previously completed work
+abort work if no longer needed
+
+
 props->properties
+class is reserved keyword so we use className
+intellisense
+bg-green text-black rounded-xl p-0 m-4 
 image tag ko closing tag mein daalna hoga
 props component ko banata hai reusable
+react technology ke basis pe segregate nahi karta wo kaam kya kiya uske basis pe segregate karta hai
+rfce ->react functional component
 ham jo bhi value pass karenge wo receive hojayega
+props ->jabbhi ham koi function banate hai ya component banate hai to we have access of props
+props ke andar empty object aata hai
+card mein jo bhi value pass karenge vo props mein show hojayegi
+but mein array ya object nahi pass kar sakta as props
+but we can declare it explicitly and pass as someObj={myObj}
+someArr={newArray}
+mujhe by default props ka access hota hai
+ham directly destructuring bhi kar sakte hai {username} 
+agar props pass kiya hota to {props.username}
+strictMode ke karan 4 baar aaraha hai 
+properties ko sirf pass karne se kuch nahi hoga usko handle bhi karna hoga
+agar props na pass kare to 
+btnText || "visit me"
+ya to pehle hi default value de do in the function
 array,object mein const mein bhi update kar sakte hai
+
 ***interview question***
 counter application -> agar setCounter mulitple times kiya then wo ek click pe ek bhi baar hi update hona hai
 useState kya karta hai aapko jitne bhi updates bhejne hai wo batches mein bhejta hai
 aap ek hi kaam baar baar kar raha ho sablog ek hi counter ko update kar rahe hai
+
 arre same hi to kaam hai so ham usse prevCounter dete hai
 setCounter mein aapko callback milta hai aap jaise hi prevCounter dete ho(last updated state)
 so callback ke through jab aata hai tab complete hone ke baad dusra call hota hai wahape update hota hai
+ab bunch of package nahi hai ab ye previous state hai
+
+approach-> color change horahe hai to mujhe kuch na kuch variable mein to hold karna hoga
+and kyuki wo ui mein bhi update horaha hai to hame useState use karna padega
+w-full h-screen full width full height
+style={{backgroundColor:color}}
+
 what i can see is colors change ho rahe hai to colors ko mujhe koi na koi variable mein hold karna padega
 kyuki wo sirf color variable nahi but ui mein jaake update ho raha hai is liye hame ek state chahiye
 onClick ko function chahiye and agar mujhe parameter pass karne hoto i have to use a callback
+directly execute hojayega nahi to 
+onClick={setColor}
+onClick={()=>setColor("red")} since it needed parameter we have to use callback
+
+
 ***Password Generator***
+kuch na kuch to method hai jo baar baar text ko update karraha hai if i increased the length
+ek hi method ko bohot baar run karna hai to kuch optimization algo hona chahiye
+memoization ka concept hai jitni chiz ham yaad rakh sake 
 ek to length chahiye and length update karnekeliye we need useState
 in checkbox we have true false numberAllowed,setNumberAllowed
 password field mein bhi data aata hai so uska bhi hame ek useState chahiye
+input field mein bhi kuch data aa raha hai directly to usse update nahi kar sakte hai to usko bhi state mein rakhna hoga
+
+
 useCallback 
+method to baar baar wohi run horaha hai
+jitna hosake utna cache mein rakhlo and jabbhi wapas chahiye tab cache mein se use karlo
 hooks kya hai ek function hi to hai
 hooks purely js hi return karte hai ,standardized approach to use use
+dependency kya hai ek array hi hai and jab bhi call karna padega wo sabko daaldo in dependency array
+setPassword ke basis pe bhi ham change karenge
+prev value ka access milta hai to true ka false hojayega and false ka true hojayega
+meri in sab se baat hogi to wo sab ko array mein pass karenge
+useEffect hook -> kuch bhi change ho wapas run karta hai
+
 mein chahte hu ki jab data load ho tab mein hook ko call karu
 useEffect will be use in this case so isme fetch automatically call hojayega function ke andar function call nahi karna padega
 jabbhi data milta hai wo string format mein hota hai date ki hame requirement nahi hai
+useEffect: jab bhi page pehli baar load hota hai tabhi run hota hai and jabbhi depenedency array mein jo chize hai usme ched chani hui to wapas run hota hai
 
-////React Router Crash////
+useRef : it returns the reference koi bhi element hai aapke paas to aap uska reference le sakte ho
+and uske saath manipulation kar sakte hai
+
+***React Router Crash***
 parameter capture karna is possible in the url and wo ek baar sikh gaye to 
 then id,productId sabkuch same hi hai
 react-router-dom is 3rd party library 
-link we use in case of a tag 
+link we use in case of 'a' tag 
 navLink provide us extra things 
 when we are in header than how will the header know on which page it is for that we have to use
 callback in classes callback ki classes ko manipulate kaise karte hai uske liye we have access of 1 variable isActive
@@ -196,11 +278,23 @@ return it using response.json()
 ham top level pe layout rakhte hai to uske basis pe hi routing hogi
 uske andar outlet laga rakha hai tabhi wo uske andar ka reflect karega
 ham dynamic value bhi le sakte hai url se user/:userid
-
+userid ko dhyan rakhna
+facebook pe login karte ho to layout same hota hai khali id ke basis pe data change hojata hai
+aapka data id ke basis pe aata hai 
+user 1 pe bhi render kar raha hai and 100 pe bhi render kar raha hai
+userid ka access uss component mein mil jaata hai
+react kuch bhi hava mein nahi karta hai
+useParams react router dom se aata hai 
+jo bhi url mein aara ha uska access mil jata hai
+uske basis pe aap db call karna chahte ho display karna chahte ho 
+jo karna hai kar sakte ho
+loader ->hover karte hi api ki fetching shuru kar dete hai
+loader ke andar hi sidha fetch mein api call kar sakte hai
+ 
 
 ///////useEffect,useCallback,useRef////////
 ek hi method ko baar baar run karna hai to wo method ko agar optimized way mein kiya then it will be good
-length ko track karnekeliye useState Lagega and uski default value lemi hogi
+length ko track karnekeliye useState Lagega and uski default value leni hogi
 ek hi method ko baar baar call karna hai so useCallback is used for that
 useCallback is a react hook that lets you cache a function definition between rerenders
 mere paas ek function hai usko jitna ho sake utna cache mein rakhlo and jab bhi wapas run ho to jitna pehle ka part ho wo wapas run hojaye
@@ -226,6 +320,11 @@ mein se kiske saath changes hui to wapas call hoga
 
 
 //// currencyConverter /////
+custom hooks can use other hooks as well like useState,useEffect
+
+i have to make an api call
+i want to call when this hook loads at that time this api should be called
+iss method se automatic fetch call hojayega and mujhe function ke andar ek aur function nahi banana padega
 koi bhi component mount hota hai ya uska lifecycle trigger hota hai to hamare paas ek hook hai useEffect
 hooks function hi to hai
 custom hook banana is not a big thing they normally returns js
@@ -237,6 +336,12 @@ currency ke andar jab bhi change ho mein usse call karna chahta hu
 loops mei key ka dhyan rakhe to performance degrade na ho
 ids are more preferred in key
 do not call useId for keys in loop
+
+react query bydefault handle karta hai to hame .json mein karne ki zarurat nahi padti
+pehle .then mein hame callback function milta hai
+
+currnecy mein jab bhi change horaha hai to func wapas call hoga isliye ham dependency array mein currency pass karenge
+
 
 
 ///// context api /////
