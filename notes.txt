@@ -290,7 +290,12 @@ uske basis pe aap db call karna chahte ho display karna chahte ho
 jo karna hai kar sakte ho
 loader ->hover karte hi api ki fetching shuru kar dete hai
 loader ke andar hi sidha fetch mein api call kar sakte hai
- 
+<Navlink to ='/about' className={({isActive})}=>
+
+/>
+useLoaderData
+outlet -> react router dom ki madat se hamne nesting kar li
+loader sidha promise ko hi leke data return karsakta hai
 
 ///////useEffect,useCallback,useRef////////
 ek hi method ko baar baar run karna hai to wo method ko agar optimized way mein kiya then it will be good
@@ -345,6 +350,7 @@ currnecy mein jab bhi change horaha hai to func wapas call hoga isliye ham depen
 
 
 ///// context api /////
+there was no option in react where we had to pass props from various props to props 
 props ke andar props sirf aage pass karnekeliye a prop has to go to various places
 app ke through card mein data pass karna hai ye data props ke through accept hota tha
 app->dashboard->leftSide->rightSide->topComponent->card
@@ -352,26 +358,119 @@ props ke andar props hi possible hai usage nahi hai to bhi daa pass kar rahe hai
 
 but agar kuch global object hota jo sidha card se baat kar sake
 so isse raita nahi faliega ye problem tha prop drllling
-contextApi is the solution to this but ye prop drilling ki problem sirf react ko thodina thi 
+contextApi is the solution to this but ye prop drilling ki problem sirf react ko thodina thi backbonejs ki bhi thi
 so redux is used for this problem state management ko organized form mein karna
-redux ka simpler version is redux toolkit 
+redux ka simpler version is redux toolkit (rtk)
+zustand is also used for state maanagement
 context api is just for react
 ek baar context api samajh gaye to redux toolkit bhi easily samajh jayega
-what is state management?State management is a user interface programming technique that involves managing the state of one or more user interface controls
+what is state management?State management is a user interface programming
+technique that involves managing the state of one or more user interface controls
 context api matlab ek global variable bana raha hu us variable ke andar saara data jaayega
-but react hai to state itni aasani se update nahi hoti so ham wapas se ussi problem mein fas jaate state synchronize nahi hoti
-kyuki koi bhi variable usse update kardega and jaha nahi chahiye waha bhi update hojayega isliye nahi to mien ek global.js ka bhi file bana sakta tha but usme states synchronized nahi rahegi
+but react hai to state itni aasani se update nahi hoti so ham wapas se ussi problem mein fas 
+jaate state synchronize nahi hoti
+kyuki koi bhi variable usse update kardega and jaha nahi chahiye waha bhi update hojayega isliye nahi to 
+mien ek global.js ka bhi file bana sakta tha but usme states synchronized nahi rahegi
 src mein context naam ka file banayenge and isne pure and pure js hi use hota hai
 react ke andar hi hame context mil jata hai
-context hame major chij deta hai provider har ek context ek provider hota hai and usko ham ek wrapper provide karenge\
+ham multiple context bana sakte hai userContext hai cardContext hai productContext loginContext etc
+React.createContext() is a method and we store it in a variable
+
+context hame major chij deta hai provider har ek context ek provider hota hai and usko ham ek wrapper provide karenge
 jitne bhi hai login card dashboard inn sabhi ko wrap kar diya inside userContext
 jaise hi isse wrap karvadiya ye ban jayenge provider and provider matlab ab koi bhi iske andar is global context ka access mil jayega
 context ko global variable ki tarah hi maano so andar ke saare child component userContext ka access le sakte hai
-providee ko bananeka 2 tarike hai
+<UserContext>
+<Login/>
+<Card>
+<Data/>
+<Card/>
+<UserContext/>
+abhi andar ke saare component jaise ki login card data sabko provider ka access mil jayega
+context ek baar bangaya using createContext() then hame provider banana padta hai and usse top level pe rakh sakte hai
+and ye components userContext through access le sakte hai
+provider ko bananeka 2 tarike hai
+state mein koi bhi chiz rakh sakte hai user,setUser ya koi api call bhi rakh sakte hai and jo access aayega wo
+sidha pass kardenge into Usercontext.Provider value={{user,setUser}}
 context provider will be in jsx 
+jo bhi props aa rahe hai usse aage as children pass kardo 
+wo kya access karega kuch data bhi to hona chahiye na
+value mein i m passing objects jo man chahiye wo sab ka access de diya
 children bas ek generic naam hai ki aapko jo bhi data aa raha hai from props aap usse aage dedo
 value mein hame jo chize chahiye wo pass kar sakte hai
 store ka access main.jsx mein bhi ho sakta hai ya app.jsx mein bhi ho sakta hai 
-
+pehle userContextProvider ka access lelo in app.jsx 
+data access and data send kaise karenge wo dekhlenge
+useContext ek hook hai 
+setUser is used to add value agar koi field mein value add karni ho to i can use setUser
+agar koi field mein value deni ho to i have to use user
+useContext mein context dena padta hai ke kiska context lena hai
+ye baat hui data bhejne ki
+data lene ke liye same chiz hi karni hai but ye time setUser nahi user use karenge
+we just have if else condition where if(!user) we will return a error message
+initial state mein bhi kuch value de sake
+jaise ki themeMode ek default value ho jaise ki light
+ham variable bhi de sakte hai and methods bhi de sakte hai
+yahape ham custom hooks bhi banate hai 
+tailwind ke andar darkMode:"class" karna mat bhulna 
 context api light/dark theme
 default object rakh sakte hai 
+
+text editable nahi hota wahape input field aajayega 
+edit aur delete ke liye id chahiye
+context api directly available hota hai  kuch isntall nahi karna padta hai
+context api bohot bade project ke liye nahi bana hai 
+method ka name same hi rakhna
+localStorage string format mein hota hai
+
+redux toolkit
+redux is state management library
+react-redux is used to connect redux with react
+flux mein data flow bohot achese hota hai
+redux is library 
+heavy configuration    
+state and action milta hai 
+state ke andar current state milta hai
+action jo bhi data pass ho raha hai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
